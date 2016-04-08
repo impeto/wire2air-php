@@ -1,0 +1,5 @@
+vendor/
+.idea/
+.env
+.env.test
+wire2air.php

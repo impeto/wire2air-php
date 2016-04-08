@@ -1,0 +1,26 @@
+{
+    "name": "impeto/wire2air-php",
+    "description": "PHP package for the Wire2air SMS API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alin Mazilu",
+            "email": "alin@skeglobaltech.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Impeto\\Wire2Air\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.3",
+        "vlucas/phpdotenv": "^2.2",
+        "illuminate/support": "^5.2"
+    }
+}
