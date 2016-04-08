@@ -1,6 +1,6 @@
 <?php
 
-namespace Impeto\Laravel;
+namespace Impeto\Wire2Air\Laravel;
 
 use Illuminate\Support\Facades\Facade;
 

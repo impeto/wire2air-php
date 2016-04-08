@@ -1,6 +1,6 @@
 <?php
 
-namespace Impeto\Laravel;
+namespace Impeto\Wire2Air\Laravel;
 
 use Illuminate\Support\ServiceProvider;
 use Impeto\Wire2Air\Wire2AirAPI;
