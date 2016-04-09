@@ -24,6 +24,6 @@ class IncomingSMSTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals( 'KEYWORD', $sms->keyword);
         $this->assertEquals( '12345678901', $sms->from);
-        $this->assertEquals( '2016-04-09 13:43:09', $sms->received_at);
+        $this->assertEquals( '2016-04-09 13:43:09', $sms->sent_at);
     }
 }
