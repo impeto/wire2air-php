@@ -7,18 +7,17 @@ class IncomingSMS
     private $data = [];
 
     public function __construct( array $data){
+
         $this->from = $data['mobilenumber'];
 
         $body = explode( ' ', $data['message'], 2);
         $this->keyword = strtoupper( trim($body[0]));
 
-        if ( count( $body) === 2){
-            $this->message = trim($body[1]);
-        }
-
-        $this->received_at = $data['Rcvd'];
+        $this->sent_at = $data['Rcvd'];
 
         $this->to = $body['SHORTCODE'];
+
+        $this->text = $body['message'];
 
         $this->session = $body['SESSIONID'];
     }

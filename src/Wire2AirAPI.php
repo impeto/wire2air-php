@@ -46,7 +46,7 @@ class Wire2AirAPI
 
         $this->client = new Client([
             'headers' => [
-                'User-Agent' => 'impeto/wire2air/1.0'
+                'User-Agent' => 'impeto/wire2air/1.2.1'
             ]
         ]);
     }
