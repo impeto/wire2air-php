@@ -20,6 +20,12 @@ class Wire2AirAPI
                 'userid', 'password', 'vasid'
             ]
         ],
+        'send_mms' => [
+            'url' => 'http://mms.wire2air.com/mms/submitmms.aspx',
+            'required' => [
+                'version', 'userid', 'password', 'vasid', 'from', 'to', 'subject', 'baseurl', 'attachments'
+            ]
+        ],
         'register_keyword' => 'http://mzone.wire2air.com/mserver/servicemanager/api/RegisterKeywordAPI.aspx',
         'check_keyword' => 'http://mzone.wire2air.com/mserver/servicemanager/api/checkkeywordapi.aspx',
         'subscribe_keyword' => 'http://mzone.wire2air.com/mserver/api/subscribekeywords.aspx',
