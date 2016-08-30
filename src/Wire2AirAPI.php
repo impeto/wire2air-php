@@ -62,6 +62,17 @@ class Wire2AirAPI
         return $this->createRequestAndSend( 'send_message', ['to' => $to, 'text' => $message]);
     }
 
+    public function mms( $to, $subject, $baseurl, $attachments)
+    {
+        $data = compact( 'to', 'subject', 'baseurl', 'attachments');
+
+        if ( is_array( $attachments)){
+            $data['attachments'] = implode(',', $attachments);
+        }
+
+        return $this->createRequestAndSend( 'send_mms', $data);
+    }
+
     public function credits(){
         return $this->createRequestAndSend( 'check_credits', []);
     }
