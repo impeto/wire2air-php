@@ -23,7 +23,7 @@ class Wire2AirAPI
         'send_mms' => [
             'url' => 'http://mms.wire2air.com/mms/submitmms.aspx',
             'required' => [
-                'version', 'userid', 'password', 'vasid', 'from', 'to', 'subject', 'baseurl', 'attachments'
+                'version', 'userid', 'password', 'vasid', 'from', 'to', 'subject', 'baseurl', 'attachments', 'profileid'
             ]
         ],
         'register_keyword' => 'http://mzone.wire2air.com/mserver/servicemanager/api/RegisterKeywordAPI.aspx',
