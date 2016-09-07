@@ -57,15 +57,13 @@ class Wire2AirAPI
         ]);
     }
 
-    public function sms( $to, $message)
+    public function sms( $to, $message, $optionals = [])
     {
+        $data = array_merge( compact( 'to', 'message'), $optionals, ['version' => "2.0"]);
+
         return $this->createRequestAndSend(
             'sms',
-            [
-                'to' => $to,
-                'text' => $message,
-                'version' => "2.0"
-            ]
+            $data
         );
     }
 
