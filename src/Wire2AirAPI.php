@@ -8,7 +8,7 @@ class Wire2AirAPI
 {
 
     private $endpoints = [
-        'send_message' => [
+        'sms' => [
             'url' =>'http://smsapi.wire2air.com/smsadmin/submitsm.aspx',
             'required' => [
                 'version', 'userid', 'password', 'vasid', 'profileid', 'from', 'to', 'text'
@@ -20,7 +20,7 @@ class Wire2AirAPI
                 'userid', 'password', 'vasid'
             ]
         ],
-        'send_mms' => [
+        'mms' => [
             'url' => 'http://mms.wire2air.com/mms/submitmms.aspx',
             'required' => [
                 'version', 'userid', 'password', 'vasid', 'from', 'to', 'subject', 'baseurl', 'attachments', 'profileid'
@@ -52,14 +52,21 @@ class Wire2AirAPI
 
         $this->client = new Client([
             'headers' => [
-                'User-Agent' => 'impeto/wire2air/1.2.1'
+                'User-Agent' => 'impeto/wire2air/1.2.6'
             ]
         ]);
     }
 
     public function sms( $to, $message)
     {
-        return $this->createRequestAndSend( 'send_message', ['to' => $to, 'text' => $message]);
+        return $this->createRequestAndSend(
+            'sms',
+            [
+                'to' => $to,
+                'text' => $message,
+                'version' => "2.0"
+            ]
+        );
     }
 
     public function mms( $to, $subject, $baseurl, $attachments)
@@ -70,7 +77,9 @@ class Wire2AirAPI
             $data['attachments'] = implode(',', $attachments);
         }
 
-        return $this->createRequestAndSend( 'send_mms', $data);
+        $data['version'] = "1.0";
+
+        return $this->createRequestAndSend( 'mms', $data);
     }
 
     public function credits(){
@@ -97,7 +106,7 @@ class Wire2AirAPI
         $config = [];
 
         $required = [
-            'version', 'userid', 'password', 'vasid', 'profileid', 'from'
+            'userid', 'password', 'vasid', 'profileid', 'from'
         ];
 
         foreach ( $required as $item){
