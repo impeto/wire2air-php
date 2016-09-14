@@ -57,9 +57,9 @@ class Wire2AirAPI
         ]);
     }
 
-    public function sms( $to, $message, $optionals = [])
+    public function sms( $to, $text, $optionals = [])
     {
-        $data = array_merge( compact( 'to', 'message'), $optionals, ['version' => "2.0"]);
+        $data = array_merge( compact( 'to', 'text'), $optionals, ['version' => "2.0"]);
 
         return $this->createRequestAndSend(
             'sms',
@@ -95,6 +95,8 @@ class Wire2AirAPI
         $this->validate( $endpoint, $data);
 
         $result =  $this->client->request( 'POST', $this->endpoints[$endpoint]['url'], ['form_params' => $data]);
+
+        var_dump( $result);
 
         return new W2AResponse( $result);
     }

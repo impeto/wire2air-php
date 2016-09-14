@@ -26,4 +26,24 @@ class IncomingSMSTest extends PHPUnit_Framework_TestCase
         $this->assertEquals( '12345678901', $sms->from);
         $this->assertEquals( '2016-04-09 13:43:09', $sms->sent_at);
     }
+
+    public function testSMS()
+    {
+        $dot = new Dotenv\Dotenv( dirname(__DIR__), '.env.test');
+        $dot->load();
+
+        $config = require dirname(__DIR__).'/wire2air.php';
+
+        $api = new \Impeto\Wire2Air\Wire2AirAPI( $config);
+
+        $response = $api->sms(
+            getenv( 'W2A_TESTTO'),
+            'Please reply with Y to get communication. Just a test.',
+            [
+                'replypath' => getenv('W2A_REPLYPATH')
+            ]
+        );
+
+        var_dump( $response);
+    }
 }
