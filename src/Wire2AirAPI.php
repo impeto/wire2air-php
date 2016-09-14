@@ -52,7 +52,7 @@ class Wire2AirAPI
 
         $this->client = new Client([
             'headers' => [
-                'User-Agent' => 'impeto/wire2air/1.2.6'
+                'User-Agent' => 'impeto/wire2air/1.2.9'
             ]
         ]);
     }
@@ -96,7 +96,7 @@ class Wire2AirAPI
 
         $result =  $this->client->request( 'POST', $this->endpoints[$endpoint]['url'], ['form_params' => $data]);
 
-        var_dump( $result);
+        //var_dump( $result);
 
         return new W2AResponse( $result);
     }
