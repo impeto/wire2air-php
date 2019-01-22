@@ -7,7 +7,6 @@ use Impeto\Wire2Air\Wire2AirAPI;
 
 class Wire2AirServiceProvider extends ServiceProvider
 {
-
     protected $defer = true;
 
     /**
@@ -17,21 +16,21 @@ class Wire2AirServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $config = $this->app->make( 'config');
-        if ( $config->has('wire2air'))
-        {
-            $client = new Wire2AirAPI( $config->get( 'wire2air'));
+        $config = $this->app->make('config');
+
+        if ($config->has('wire2air')) {
+            $client = new Wire2AirAPI($config->get('wire2air'));
         } else {
             $client = new Wire2AirAPI();
         }
 
-        $this->app->singleton( ['w2a', 'Impeto\Wire2Air'], function( $app) use ($client){
+        $this->app->singleton('w2a', function ($app) use ($client) {
             return $client;
         });
     }
 
     public function provides()
     {
-        return ['w2a', 'Impeto\Wire2Air'];
+        return ['w2a'];
     }
 }
