@@ -67,7 +67,7 @@ class Wire2AirAPI
         );
     }
 
-    public function mms( $to, $subject, $baseurl, $attachments)
+    public function mms( $to, $subject, $baseurl, $attachments, $extra = [])
     {
         $data = compact( 'to', 'subject', 'baseurl', 'attachments');
 
@@ -77,7 +77,7 @@ class Wire2AirAPI
 
         $data['version'] = "1.0";
 
-        return $this->createRequestAndSend( 'mms', $data);
+        return $this->createRequestAndSend( 'mms', $data + $extra);
     }
 
     public function credits(){
